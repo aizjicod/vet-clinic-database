@@ -22,3 +22,27 @@ VALUES('Charmander','2020-2-8',0,FALSE,-11.23),
 ('Boarmon','2005-6-7',7,TRUE,20.4),
 ('Blossom','1998-10-13',3,TRUE,17),
 ('Ditto','2022-5-14',4,TRUE,22);
+
+-- insert values into owners table
+INSERT INTO owners(full_name, age)
+VALUES('Sam Smith',34),
+('Jennifer Orwell',19),
+('Bob', 45),
+('Melody Pond', 77),
+('Dean Winchester', 17),
+('Jodie Whittaker', 38);
+
+-- insert values into species table
+
+INSERT INTO species("name")
+VALUES('Digimon'),
+('Pokemon');
+
+UPDATE animals
+SET species_id = 1
+WHERE "name" LIKE ('%mon%');
+
+UPDATE animals
+SET species_id = 2
+WHERE "name" NOT LIKE ('%mon%');
+SELECT * FROM animals;
