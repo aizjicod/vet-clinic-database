@@ -126,13 +126,6 @@ JOIN vets VE
 ON VE.id = VI.vets_id
 WHERE VE."name" = 'Stephanie Mendez';
 
-SELECT vets."name" as vets_name, S."name" as vet_specialization
-FROM vets
-FULL JOIN specializations SP
-ON vets.id = SP.vets_id
-FULL JOIN species S 
-ON SP.species_id = S.id;
-
 SELECT A."name", visits.date FROM visits
 JOIN animals A
 ON visits.animals_id = A.id
@@ -145,14 +138,12 @@ ON visits.animals_id = A.id
 GROUP BY A."name" ORDER BY number_visits DESC
 LIMIT 1;
 
-SELECT A."name", visits.date as date FROM visits
-JOIN animals A
-ON visits.animals_id = A.id
-JOIN vets VE
-ON visits.vets_id = VE.id
-WHERE VE."name" = 'Maisy Smith'
-ORDER BY date
-LIMIT 1;
+SELECT vets."name" as vets_name, S."name" as vet_specialization
+FROM vets
+FULL JOIN specializations SP
+ON vets.id = SP.vets_id
+FULL JOIN species S 
+ON SP.species_id = S.id;
 
 SELECT VE."name", COUNT(*) as not_specialities FROM visits
 JOIN animals A
@@ -164,4 +155,13 @@ ON visits.vets_id = VE.id
 JOIN specializations as S
 ON S.vets_id = visits.vets_id
 WHERE species.id != S.species_id
-GROUP BY VE."name" ORDER BY not_specialities DESC
+GROUP BY VE."name" ORDER BY not_specialities DESC;
+
+SELECT A."name", visits.date as date FROM visits
+JOIN animals A
+ON visits.animals_id = A.id
+JOIN vets VE
+ON visits.vets_id = VE.id
+WHERE VE."name" = 'Maisy Smith'
+ORDER BY date
+LIMIT 1;
